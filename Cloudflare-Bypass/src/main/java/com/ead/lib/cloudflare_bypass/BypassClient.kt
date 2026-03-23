@@ -104,7 +104,7 @@ open class BaseClient : WebViewClient() {
     /**
      * override functions to react to the bypass response
      */
-    open fun onPageFinishedByPassed(view: WebView?, url: String?) {}
+    open fun onPageFinishedByPassed(view: WebView?, url: String?, isCloudflareChallenge: Boolean) {}
 }
 
 
@@ -161,7 +161,7 @@ open class BypassClient : BaseClient() {
                     /**
                      * call the onPageFinishedPassed function on the ui thread
                      */
-                    mainScope.launch { onPageFinishedByPassed(view, url) }
+                    mainScope.launch { onPageFinishedByPassed(view, url, true) }
                 }
             }
 
@@ -169,7 +169,7 @@ open class BypassClient : BaseClient() {
             /**
              * if the page is not a cloudflare challenge, call the onPageFinishedPassed function
              */
-            else -> { onPageFinishedByPassed(view, url) }
+            else -> { onPageFinishedByPassed(view, url, false) }
         }
     }
 }

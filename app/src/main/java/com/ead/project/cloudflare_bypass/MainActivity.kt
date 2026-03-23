@@ -45,8 +45,8 @@ class MainActivity : ComponentActivity() {
                                         super.onPageStartedPassed(view, url, favicon)
                                     }
 
-                                    override fun onPageFinishedByPassed(view: WebView?, url: String?) {
-                                        super.onPageFinishedByPassed(view, url)
+                                    override fun onPageFinishedByPassed(view: WebView?, url: String?, isCloudflareChallenge: Boolean) {
+                                        super.onPageFinishedByPassed(view, url, isCloudflareChallenge)
                                         Toast.makeText(context, "Bypass", Toast.LENGTH_SHORT).show()
                                     }
                                 }

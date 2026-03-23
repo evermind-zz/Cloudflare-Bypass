@@ -36,7 +36,7 @@ class BypassClientTest {
 
         // then
         verify(exactly = 1) { mockWebView.evaluateJavascript(Scripts.CLOUDFLARE_BYPASS) }
-        verify(exactly = 0) { bypassClient.onPageFinishedByPassed(mockWebView, "https://example.com") }
+        verify(exactly = 0) { bypassClient.onPageFinishedByPassed(mockWebView, "https://example.com", true) }
     }
 
     @Test
@@ -50,6 +50,6 @@ class BypassClientTest {
 
         //then
         verify(exactly = 0) { mockWebView.evaluateJavascript(Scripts.CLOUDFLARE_BYPASS) }
-        verify(exactly = 1) { bypassClient.onPageFinishedByPassed(mockWebView, "https://example.com") }
+        verify(exactly = 1) { bypassClient.onPageFinishedByPassed(mockWebView, "https://example.com", false) }
     }
 }
